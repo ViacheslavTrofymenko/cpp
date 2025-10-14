@@ -6,12 +6,12 @@
 #    By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/04 18:29:15 by vtrofyme          #+#    #+#              #
-#    Updated: 2025/10/14 12:01:06 by vtrofyme         ###   ########.fr        #
+#    Updated: 2025/10/14 19:26:27 by vtrofyme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		= fixed
+NAME		= fixedPoint
 
 MAIN		= main.cpp Fixed.cpp
 
