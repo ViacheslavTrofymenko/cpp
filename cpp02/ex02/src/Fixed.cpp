@@ -6,50 +6,39 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 19:10:57 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/10/14 19:30:17 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:09:27 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Fixed.hpp"
 
 Fixed::Fixed(): value(0)
-{
-	std::cout << "Default constructor called" << std::endl;
-}
+{}
 Fixed::Fixed(const int num)
 {
-	std::cout << "Int constructor called" << std::endl;
 	value = num << bitsPoint;
 }
 
 Fixed::Fixed(const float num)
 {
-	std::cout << "Float constructor called" << std::endl;
 	value = roundf(num * (1 << bitsPoint));
 }
 Fixed::Fixed(const Fixed& copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	this->value = copy.value;
 }
-Fixed::~Fixed()
-{
-	std::cout << "Destructor Called" << std::endl;
-}
+Fixed::~Fixed() {}
 
 int		Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->value;
 }
 void	Fixed::setRawBits( int const raw )
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	this->value = raw;
 }
 Fixed&	Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	this->value = other.value;
 	return (*this);
 }
@@ -82,64 +71,81 @@ int	Fixed::getBinaryPoint( void ) const
 	return this->bitsPoint;
 }
 
-bool	operator>(const Fixed& a, const Fixed& b)
+// Comparison operators
+bool	Fixed::operator>(const Fixed& fixed) const
 {
-	return (a.getRawBits() > b.getRawBits());
+	return (this->toFloat() > fixed.toFloat());
 }
 
-bool	operator<(const Fixed& a, const Fixed& b)
+bool	Fixed::operator<(const Fixed& fixed) const
 {
-	return (a.getRawBits() < b.getRawBits());
+	return (this->toFloat() < fixed.toFloat());
+}
+bool	Fixed::operator>=(const Fixed& fixed) const
+{
+	return (this->toFloat() >= fixed.toFloat());
 }
 
-bool	operator==(const Fixed& a, const Fixed& b)
+bool	Fixed::operator<=(const Fixed& fixed) const
 {
-	return (a.getRawBits() == b.getRawBits());
+	return (this->toFloat() <= fixed.toFloat());
 }
 
-bool	operator!=(const Fixed& a, const Fixed& b)
+bool	Fixed::operator==(const Fixed& fixed) const
 {
-	return (a.getRawBits() != b.getRawBits());
+	return (this->toFloat() == fixed.toFloat());
 }
 
-Fixed	operator+(const Fixed& a, const Fixed& b)
+bool	Fixed::operator!=(const Fixed& fixed) const
 {
-	Fixed	tmp;
+	return (this->toFloat() != fixed.toFloat());
+}
 
-	tmp.setRawBits(a.getRawBits() + b.getRawBits());
+// Arithmetic Operators
+Fixed	Fixed::operator+(const Fixed& fixed) const
+{
+	Fixed	tmp(this->toFloat() + fixed.toFloat());
+
 	return (tmp);
 }
 
-Fixed	operator-(const Fixed& a, const Fixed& b)
+Fixed	Fixed::operator-(const Fixed& fixed) const
 {
-	Fixed	tmp;
-
-	tmp.setRawBits(a.getRawBits() - b.getRawBits());
+	Fixed tmp(this->toFloat() - fixed.toFloat());
 	return (tmp);
 }
 
-Fixed	operator*(const Fixed& a, const Fixed& b)
+Fixed	Fixed::operator*(const Fixed& fixed) const
 {
-	Fixed	tmp;
-
-	tmp.setRawBits((a.getRawBits() * b.getRawBits()) >> a.getBinaryPoint());
+	Fixed	tmp(this->toFloat() * fixed.toFloat());
 	return (tmp);
 }
 
-Fixed	operator/(const Fixed& a, const Fixed& b)
+Fixed	Fixed::operator/(const Fixed& fixed) const
 {
-	Fixed	tmp;
-
-	tmp.setRawBits((a.getRawBits() / b.getRawBits()) << a.getBinaryPoint());
+	if (fixed.getRawBits() == 0)
+	{
+		std::cout << "You tried to divide by zero. This is prohibited" << std::endl;
+		return (Fixed(0));
+	}
+	Fixed	tmp(this->toFloat() / fixed.toFloat());
 	return (tmp);
 }
 
+	//Pre-increment operators
 Fixed&	Fixed::operator++( void )
 {
 	(this->value)++;
 	return (*this);
 }
 
+Fixed&	Fixed::operator--( void )
+{
+	(this->value)--;
+	return (*this);
+}
+
+// Post-increment operators
 Fixed	Fixed::operator++( int )
 {
 	Fixed	old;
@@ -147,12 +153,6 @@ Fixed	Fixed::operator++( int )
 	old = *this;
 	(this->value)++;
 	return (old);
-}
-
-Fixed&	Fixed::operator--( void )
-{
-	(this->value)--;
-	return (*this);
 }
 
 Fixed	Fixed::operator--( int )
