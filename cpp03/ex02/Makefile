@@ -6,14 +6,14 @@
 #    By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/04 18:29:15 by vtrofyme          #+#    #+#              #
-#    Updated: 2025/10/20 13:57:45 by vtrofyme         ###   ########.fr        #
+#    Updated: 2025/10/20 14:14:43 by vtrofyme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		= scavTrap
+NAME		= repetitive
 
-MAIN		= main.cpp ClapTrap.cpp ScavTrap.cpp
+MAIN		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 MAINDIR		= src
 MAINSRC		= $(addprefix $(MAINDIR)/, $(MAIN))
