@@ -6,13 +6,15 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 19:10:55 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/10/20 14:05:08 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/10/21 13:04:00 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ScavTrap.hpp"
+#include "../include/FragTrap.hpp"
 
 int main( void ) {
+	std::cout << "### TESTING CLAPTRAP ###\n" << std::endl;
 	{
 		ClapTrap a;
 		ClapTrap b("Alice");
@@ -27,7 +29,7 @@ int main( void ) {
 			b.attack("Cody-clone");
 		b.beRepaired(3);
 	}
-	std::cout << "===================================================" << std::endl;
+	std::cout << "### TESTING SCAVTRAP ###\n" << std::endl;
 	{
 		ScavTrap c;
 		ScavTrap d("Bob");
@@ -42,6 +44,19 @@ int main( void ) {
 			d.attack("Cody-clone");
 		d.beRepaired(3);
 	}
+	std::cout << "### TESTING FRAGTRAP ###\n" << std::endl;
+	{
+		FragTrap e;
+		FragTrap f("Chadd");
+
+		e.highFivesGuys();
+		e.attack("some random dude");
+		e.takeDamage(101);
+		e.takeDamage(1);
+		e.attack("some random dude");
+		f.highFivesGuys();
+	}
+
 
 
 	return ( 0 );
