@@ -6,7 +6,7 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:53:19 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/10/22 17:55:23 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:53:34 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Dog::Dog (std::string type) : Animal(type)
 
 Dog::Dog(const Dog &other) : Animal(other)
 {
-	*this = other;
+	this->type = other.type;
 	std::cout << C_RED "Dog copy constructor called" C_RESET <<std::endl;;
 }
 

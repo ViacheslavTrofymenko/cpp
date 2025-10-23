@@ -6,7 +6,7 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 22:17:53 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/10/23 11:10:53 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:55:17 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #define MAX_MATERIA 4
 
-class	Character : virtual public ICharacter
+class	Character : public ICharacter
 {
 	private:
 		std::string	_name;

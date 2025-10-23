@@ -6,7 +6,7 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:30:57 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/10/22 17:51:18 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:53:09 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Cat::Cat (std::string type) : Animal(type)
 
 Cat::Cat(const Cat &other) : Animal(other)
 {
-	*this = other;
+	this->type = other.type;
 	std::cout << C_BLU "Cat copy constructor called" C_RESET <<std::endl;;
 }
 
