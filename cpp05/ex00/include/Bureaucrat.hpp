@@ -6,7 +6,7 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:29:41 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/11/06 10:17:48 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/11/07 10:11:46 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ class Bureaucrat
 
 		const std::string  &getName() const;
 		unsigned int getGrade() const;
+
 		void incrementGrade();
 		void decrementGrade();
+
 		class GradeTooHighException : public std::exception
 		{
 			public:

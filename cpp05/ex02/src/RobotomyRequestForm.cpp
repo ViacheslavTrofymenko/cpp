@@ -13,13 +13,10 @@
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
 
-
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target)
 : AForm("RobotomyRequestForm",72,45), _target(target) {}
 
-
 RobotomyRequestForm::~RobotomyRequestForm() {}
-
 
 void RobotomyRequestForm::executeAction() const {
 std::cout << "* drilling noises *" << std::endl;

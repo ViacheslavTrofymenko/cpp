@@ -6,7 +6,7 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:50:21 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/11/06 21:50:51 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/11/07 10:18:50 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 #include "AForm.hpp"
 #include <iostream>
 
-class PresidentialPardonForm : public AForm {
+class PresidentialPardonForm : public AForm
+{
 	private:
 	std::string _target;
 
+	protected:
+	virtual void executeAction() const;
 
 	public:
 	PresidentialPardonForm(std::string const &target);
 	virtual ~PresidentialPardonForm();
-
-
-	protected:
-	virtual void executeAction() const;
-	};
+};

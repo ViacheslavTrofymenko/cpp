@@ -6,7 +6,7 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:44:15 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/11/06 21:53:44 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:10:36 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,34 @@
 #include "../include/RobotomyRequestForm.hpp"
 #include "../include/PresidentialPardonForm.hpp"
 
-int main() {
-    std::srand(time(NULL));
+int main()
+{
+	try
+	{
+		Bureaucrat high("Alice", 1);
+		Bureaucrat low("Bob", 150);
 
+		ShrubberyCreationForm shrub("home");
+		RobotomyRequestForm robot("Bender");
+		PresidentialPardonForm pardon("Marvin");
 
-    Bureaucrat boss("Boss", 1);
-    ShrubberyCreationForm f1("home");
-    RobotomyRequestForm f2("Bender");
-    PresidentialPardonForm f3("Marvin");
+		std::cout << "---- Signing Forms ----" << std::endl;
+		high.signForm(shrub);
+		high.signForm(robot);
+		high.signForm(pardon);
 
+		std::cout << "\n---- Executing Forms ----" << std::endl;
+		high.executeForm(shrub);
+		high.executeForm(robot);
+		high.executeForm(pardon);
 
-    boss.signForm(f1);
-    boss.executeForm(f1);
+		std::cout << "\n---- Trying with low grade ----" << std::endl;
+		low.executeForm(shrub);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 
-
-    boss.signForm(f2);
-    boss.executeForm(f2);
-
-
-    boss.signForm(f3);
-    boss.executeForm(f3);
-
-
-    return 0;
+	return 0;
 }
