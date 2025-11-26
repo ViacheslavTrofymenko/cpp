@@ -6,7 +6,7 @@
 /*   By: vtrofyme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:25:06 by vtrofyme          #+#    #+#             */
-/*   Updated: 2025/11/25 12:53:38 by vtrofyme         ###   ########.fr       */
+/*   Updated: 2025/11/26 13:13:54 by vtrofyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
+
+# ifndef MAX_BTC
+# define MAX_BTC 21000000
+# endif
 
 class BitcoinExchange
 {
